@@ -12,6 +12,8 @@ ipykernel = "*"
 scikit-learn = "*"
 tensorflow = "*"
 pygame = "*"
+fuzzywuzzy = "*"
+python-levenshtein = "*"
 
 [dev-packages]
 
