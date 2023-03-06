@@ -10,6 +10,8 @@ matplotlib = "*"
 seaborn = "*"
 ipykernel = "*"
 scikit-learn = "*"
+tensorflow = "*"
+pygame = "*"
 
 [dev-packages]
 
