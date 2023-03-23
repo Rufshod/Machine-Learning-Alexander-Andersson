@@ -11,6 +11,8 @@ def evaluate_classification(y_test, y_pred):
     ConfusionMatrixDisplay(cm,).plot()
 
 
+
+
 def print_shapes(X_train, X_test, y_train, y_test):
     """Prints shapes of X_train, X_test, y_train, y_test"""
     print(f"X_train shape: {X_train.shape}\nX_test shape: {X_test.shape}\ny_train shape: {y_train.shape}\ny_test shape: {y_test.shape}\n")
