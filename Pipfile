@@ -14,6 +14,7 @@ tensorflow = "*"
 pygame = "*"
 fuzzywuzzy = "*"
 python-levenshtein = "*"
+joblib = "*"
 
 [dev-packages]
 
