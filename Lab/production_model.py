@@ -6,7 +6,7 @@ import joblib
 # import test_samples
 test_samples = pd.read_csv("Lab/test_samples.csv", index_col=0)
 # import model
-model = joblib.load('Lab/new_log_reg.pkl')
+model = joblib.load('Lab/test.pkl')
 
 # use trained model to predict on test_samples
 X_test = test_samples.drop('cardio', axis=1)
