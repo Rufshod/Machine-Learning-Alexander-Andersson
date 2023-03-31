@@ -4,14 +4,15 @@ import pandas as pd
 import joblib
 
 # import test_samples
-test_samples = pd.read_csv("Lab/test_samples.csv")
-
+test_samples = pd.read_csv("Lab/test_samples.csv", index_col=0)
 # import model
-model = joblib.load('Lab/rf_model.pkl')
+model = joblib.load('Lab/new_log_reg.pkl')
 
 # use trained model to predict on test_samples
 X_test = test_samples.drop('cardio', axis=1)
 y_test = test_samples['cardio']
+
+
 
 y_pred = model.predict_proba(X_test)
 
@@ -23,4 +24,4 @@ predictions = pd.DataFrame(y_pred, columns=['Probability class 0', 'Probability 
 predictions['Prediction'] = model.predict(X_test)
 
 # export the predictions to a csv file
-predictions.to_csv('Labb/predictions.csv', index=False)
+predictions.to_csv('Lab/predictions.csv', index=False)
