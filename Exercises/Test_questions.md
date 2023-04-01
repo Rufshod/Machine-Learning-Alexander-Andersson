@@ -206,17 +206,28 @@ Vi får ett review med texten "happy bad", använd Naive Bayes och klassificera 
 negativ review.  
 
   
-Svar: 
+Svar:  
+C = Class, k  
+Produkt tecken!
+
+![image.png](../Data/assets/image_1680361877405_0.png)
+![image.png](../Data/assets/image_1680362063442_0.png)
 
 17. Beskriv kort skillnaderna mellan decision tree och random forest.  
 
   
-Svar: 
+Svar:  
+Decision Tree tar en datapunkt. Sedan vid varje gren väljer den en av två val och   
+
+Random forest är ett berg med Decision Trees på varandra.
+Så datan delas upp mellan flera Decision Trees.
+med återläggning.
 
 18. Ge ett exempel på ett maskininlärningsproblem där man kan applicera logistisk regression.  
 
   
-Svar: 
+Svar: Prediktera labels.
+Spam Ham.
 
 19. Beskriv kort skillnader mellan supervised learning och unsupervised learning.  
 
