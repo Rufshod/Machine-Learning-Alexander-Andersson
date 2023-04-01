@@ -53,7 +53,8 @@ Svar:
 
 10. Du har ett dataset som ser ut som följande (1000 observationer):
 
-```temperatur i °C vind (m/s)
+```
+temperatur i °C vind (m/s)
 22.5    2.0
 8.3     10.3
 13.2    4
@@ -65,6 +66,34 @@ maskininlärningsalgoritm.
 
   
 Svar: 
+Standardisera. Scala via min max. Så det inte blir ett så stort spann när man plottar.
+
+Vi vill använda en algoritm som grupperar värdena.
+SVM kan gruppera. K-means är den mest rimliga på rak arm. 
+SVM separerar egentligen bara datan. Den är väldigt känslig för outliers.
+Outliers kan vara relevant då tillexempel under en storm kan det ju blåsa över 30m/s och det är extremt ovanligt
+
+Vi har inga labels (target) (facit). 
+Så vi behöver en modell som fungerar unsupervised. 
+
+K-means sätter allt i kluster. 
+Decision Tree grupperar även datan i olika branches. (tänk baseball exempel)
+
+Jag hade tittat på datan och testat alla tre modeller. 
+
+Sen tror jag att jag hade använt K-Means.
+Skapa kluster genom range. 
+mellan många olika testa olika K och ta ut Sum Squared dusta
+
+Bestämma K med hjälp av en elbow plot. plotta elbow, Bestäm K genom att ta punkten där det är störst procentuell skillnad mellan två punkter. Välj den sista punkten.
+
+Den punkten har minst distans mellan clustrerna. Viktigast är dock att bestämma tillsammans med en domän expert.
+
+Plotta de olika K och grupperingarna med centroider för domänexpert (Kanske överflödigt att ta med Centroid)
+
+När vi med experten valt K är vi så typ färdig.
+
+Nu kan vi ta med nya punkter och och gruppera dom. 
 
 11. Många maskininlärningsmodeller har svårt att arbeta med textdata direkt. Ge förslag på hur man skulle
 kunna förbearbeta en textsträng.  
@@ -72,35 +101,73 @@ kunna förbearbeta en textsträng.
   
 Svar: 
 
+Ta bort stopp ord och punkter, bestämma sig för stora eller små bokstäver.
+dela upp texten i individuella ord / tecken.
+skala ner ord till grundformen och endelser. så bananer är samma som banan. Eller fötter är fot.
+konvertera ord till siffror via one hot encoding. Get dummys.
+
+
+
 12. Du ska använda KNN för klassificering. Ge förslag på hur du skulle kunna gå tillväga för att   
 ett lämpligt värde på antalet neighbors.  
 
   
-Svar: 
+Svar:  
+Gå från 1 till n/2.
+Skapa elbowplot genom att loopa olika K.
+Vi använder Elbowplot för få ett så bra värde som möjligt och spara på processor.
+tillexempel ifall k = 10 ger 95% accuracy och k = 100 ger 95.5% så kan det vara värt att ta 10 pga cost / efficency trade off.
+Använda Crossvalidation för att få fram rätt svar.
+
 
 13. Beskriv begreppen: perceptron, multilayered perceptron, feedforward network, fully connected layers.  
 
+
   
 Svar: 
+Perceptron:  Artificiell Neuron i ett neuralt nätverk. Så en nod i nätverket. Tar en input. kör en aktiverings funktion som sedan skickar en output. 
+Multilayerd Perceptron: MLP, Som består av flera lager av perceptroner. Lagrerna kallas Input layer, Hidden layer och output layer.  
+Feedforward network: Hur datan rör sig genom neutral nätverket. Så från input till output. 
+fully connected layers: Alla perceptroner är kopplade till lagret framför. 
+Backpropogation: Används när man tränar nätverket. Då kan man gå bakåt i nätverket. 
 
-14. Aktiveringsfunktionen rectified linear unit (ReLU) är definierad som . En nod i ett MLP
+14. Aktiveringsfunktionen rectified linear unit (ReLU) är definierad som. En nod i ett MLP
 har denna aktiveringsfunktion och får inputs och har vikterna och bias  
 
 . Beräkna output för denna nod.  
 
   
-Svar: 
+Svar:  
+![image.png](../Data/assets/image_1680356948781_0.png)  
+Skippa sista steget för Relu.
+
+För att beräkna output y för noden med aktiveringsfunktionen Rectified Linear Unit (ReLU), följer vi dessa steg:
+
+    Beräkna den linjära kombinationen av inputs (x) och vikter (w), och lägg till bias (b).
+    Använd ReLU-aktiveringsfunktionen på resultatet från steg 1.
+
+Först, beräkna den linjära kombinationen av inputs och vikter samt bias:
+
+x = (1, 2, 3)ᵀ  
+w = (0, 2, 1)ᵀ  
+b = -2  
+
+z = xᵀw + b = (1 * 0) + (2 * 2) + (3 * 1) - 2 = 0 + 4 + 3 - 2 = 5
+
+Nu, applicera ReLU-aktiveringsfunktionen:
+
+ReLU(z) = max(0, z) = max(0, 5) = 5
+
+Så output y för noden med ReLU-aktiveringsfunktionen är 5.
 
 15. XOR grind i digitalteknik är en exklusiv disjunktion vilket innebär:
-A B A XOR B
-___
-1 1 0
-___
-1 0 1
-___
-0 1 1
-___
-0 0 0
+
+|A |B |A XOR B|
+|--|--|--|
+| 1 | 1 | 0 |
+| 1 | 0 | 1 |
+| 0 | 1 | 1 |
+| 0 | 0 | 0 |
 
 Visa att följande MLP kan simulera XOR-grind. Varje nod är en perceptron, dvs att aktiveringsfunktionen
 är en stegfunktion.  
@@ -121,8 +188,8 @@ Positiva reviews:
 <p style="margin-left: px">
 
 
-| |happy|go|od|bookauthor|bad|
-|--|--|--|--|--|--|
+| |happy|good|bookauthor|bad|
+|--|--|--|--|--|
 |Antal |50 |60 |20 |10 |1|
 </p>  
 
@@ -130,8 +197,8 @@ Positiva reviews:
 
 Negativa reviews:
 
-| |happy|go|od|bookauthor|bad|
-|--|--|--|--|--|--|
+| |happy|good|bookauthor|bad|
+|--|--|--|--|--|
 |Antal |2 |5 |40 |40 |40|
 </p>
 
