@@ -232,17 +232,23 @@ Spam Ham.
 19. Beskriv kort skillnader mellan supervised learning och unsupervised learning.  
 
   
-Svar: 
+Svar:  
+I Supervised learning behöver vi label/target,  
+i unsupervised använder vi labels. Där har vi större behov av domänkunskap för att förstå svaren.
 
 20. Beskriv kort skillnader mellan regression och klassificering.  
 
 Svar: 
+KNN Klassificerar.
+
+Regression tar ju 
+
 
 21. Rita upp ett decision tree baserat på följande figur. Tolka därefter detta decision tree.
 ![image.png](../Data/assets/image_1680161559841_0.png)  
   
-Svar: 
-  
+Svar:  
+![image.png](../assets/image_1680364193218_0.png)  Den med störst impact på svaret ska vara först
 
 22. Hitta det logiska felet i följande kod:  
 ```py
@@ -266,9 +272,12 @@ model_SVC.fit(scaled_X_train, y_train)
 y_pred = model_SVC.predict(scaled_X_test)
 # evaluation code ...
 ```
-Svar: 
-
+Svar:  
+```py
+scaled_X_test = fit_transform.(X_test)
+```
 23. Ett brandlarm har låg precision och hög recall. Diskutera konsekvenserna kring detta brandlarm. På
 vilket sätt kan detta vara bra, respektive dåligt?  
 
-Svar: 
+Svar:  
+Den kommer sällan missa att larma när det brinner. Men den kommer ofta larma när det inte brinner.
