@@ -8,48 +8,77 @@ maskininlärning. Samarbeta gärna och diskutera gärna med varandra.
 1. Vad är data leakage, varför är det dåligt och hur kan du undvika data leakage?  
 
   
-Svar: 
+Svar:  
+Data Leakage är när en del av av testdatan har tagit sin in i träningsdatan. Detta innebär att träningsdatan bara "kommer ihåg"
+Så ifall vi får en övningstenta. Sen har den riktiga tentan samma frågor som övningstentan. Då övar vi helt enkelt. 
 
 2. Beskriv vad poängen kan vara att dela upp datasetet till träningsdata och testdata för maskininlärning?  
 
   
-Svar: 
+Svar:   
+Vi delar upp datasetet för att undvika dataleakage och för att kunna simulera "ny" data genom att använda oss utav test datan.
 
 3. Beskriv vad poängen kan vara att dela upp datasetet till tränings-, validerings- och testdataset för maskininlärning?  
-
+För att kunna träna datasetet. 
   
-Svar: 
+Svar:   
+Train vill tränas och sedan öva med testdata.
+Men medans vi vill ha bra hyperparametrar för modellen så låter vi inte train titta på testdata.
+Så för att hitta best hyperparam så använder vi val istället för test för att vara så säkra som möjligt att undvika data leakage. 
+
 
 4. Hur skiljer sig batch gradient descent och mini batch gradient descent?  
 
   
-Svar: 
+Svar:    
+Mini batch går snabbare och är mindre datorkraft. Den itererar. genom hela datasetet. 
+Gör det med återläggning... Så kan missa datapunkt. 
+
+Batch gradient descent går igenom HELA datasetet. tar lång tid och tar mycket processorkraft. 
 
 5. Vad är en aktiveringsfunktion i en artificiell neuron? Ge två exempel på aktiveringsfunktioner.  
 
   
-Svar: 
+Svar:   
+Function that fires the input node. 
+
+
 
 6. Du har ett program som klassificerar email till spam eller hams (inte spam). Vilka evalueringsmetrics ska
 du kolla på och varför?  
 
   
-Svar: 
+Svar:   
+Vad är en Evalueringsmetrics. 
+Re_Call vill vi använda då den fokuserar på false negatives.
+Så bättre att diagnostisera någon som inte är sjuk än att inte diagnostisera någon som är sjuk och behöver hjälp. 
+För Re Call tar inga chanser. Den vill verkligen inte ha fel.
 
 7. Ett brandlarm larmar ofta när det inte brinner. Tror du precision är högt eller lågt, förklara varför.  
 
   
-Svar: 
+Svar:   
+Precision är låg. 
+Precision Vill vara HELT säker innan 
 
 8. Förklara vad curse of dimensionality är och hur det kan påverka en maskininlärningsmodell.  
 
   
-Svar: 
+Svar:   
+Dåligt att ha för många features.
+
+För att hantera CoD kan vi ta in mer data. eller reducera features.
+
+Ju fler features därför 
 
 9. Vad är skillnaden på feature standardization och normalization?  
 
   
-Svar: 
+Svar:   
+
+Feature Standardization: min = 0 std = 1
+Normalization: min = 0, max = 1
+
 
 10. Du har ett dataset som ser ut som följande (1000 observationer):
 
@@ -64,13 +93,16 @@ En meterolog vill gruppera dessa. Ge ett förslag på hur hen skulle kunna göra
 maskininlärningsalgoritm.  
 
   
-Svar: 
+Svar:  
+
 
 11. Många maskininlärningsmodeller har svårt att arbeta med textdata direkt. Ge förslag på hur man skulle
 kunna förbearbeta en textsträng.  
 
   
 Svar: 
+Ta bort stora / små bokstäver. 
+
 
 12. Du ska använda KNN för klassificering. Ge förslag på hur du skulle kunna gå tillväga för att   
 ett lämpligt värde på antalet neighbors.  
